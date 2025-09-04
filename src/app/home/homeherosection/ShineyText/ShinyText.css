@@ -1,0 +1,40 @@
+.shiny-text {
+  position: relative;
+  display: inline-block;
+  color: #000; /* solid black text */
+}
+
+/* Moving white highlight clipped to the same text */
+.shiny-text::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  color: transparent;
+
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  background-size: 250% 100%;
+  background-position: 120% 0;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: shine var(--shine-duration, 5s) linear infinite;
+  pointer-events: none; /* keep buttons clickable */
+  mix-blend-mode: normal; /* ensure it stays white on dark backgrounds */
+}
+
+@keyframes shine {
+  0%   { background-position: 120% 0; }
+  100% { background-position: -120% 0; }
+}
+
+/* Disable animation cleanly */
+.shiny-text.disabled::after {
+  animation: none;
+}

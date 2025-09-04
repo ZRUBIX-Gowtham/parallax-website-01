@@ -1,0 +1,10 @@
+.trusted-heading {
+  display: inline-block;
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  color: #e7e7e7;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
